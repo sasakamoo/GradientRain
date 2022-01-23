@@ -14,20 +14,19 @@ static const olc::Pixel BGPurp(230, 230, 250);
 
 class Droplet {
 private:
-	float x;
-	float y;
+	olc::vf2d* pos;
+	olc::vf2d* vel;
 	float z;
-	float yspeed;
 	float len;
+	float thickness;
 
     olc::PixelGameEngine* pge;
 
 private:
 	void DrawDroplet() {
 		for (float i = 0.0f; i < len; i++) {
-			float thickness = map(z, 0, 20, 1, 3);
 			uint32_t colour = gradient(i / len);
-			pge->FillRect(x, y+i, thickness, 1, olc::Pixel(colour));
+			pge->FillRect(pos->x, pos->y+i, thickness, 1, olc::Pixel(colour));
 		}
 	}
 
@@ -35,19 +34,19 @@ public:
 
 	Droplet(olc::PixelGameEngine* pge) {
 		this->pge = pge;
-		this->x = (float) random(0, pge->ScreenWidth());
-		this->y = (float) random(-200, -50);
+		this->pos = new olc::vf2d((float) random(0, pge->ScreenWidth()), (float) random(-200, -50));
 		this->z = (float) random(0, 20); 
-		this->yspeed = map(z, 0, 20, 75, 300);
+		this->vel = new olc::vf2d(0.0f, map(z, 0, 20, 75, 300));
 		this->len = map(z, 0, 20, 15, 35);
+		this->thickness = map(z, 0, 20, 1, 3);
 	}
 
 	void fall() {
-		y = y + (yspeed * pge->GetElapsedTime());
+		pos->y = pos->y + (vel->y * pge->GetElapsedTime());
 
-		if (y > pge->ScreenHeight()) {
-			y = (float) random(-200, -50);
-			yspeed = map(z, 0, 20, 75, 300);
+		if (pos->y > pge->ScreenHeight()) {
+			pos->y = (float) random(-200, -50);
+			vel->y = map(z, 0, 20, 75, 300);
 		}
 	}
 
