@@ -25,8 +25,9 @@ private:
 private:
 	void DrawDroplet() {
 		for (float i = 0.0f; i < len; i++) {
+			float thickness = map(z, 0, 20, 1, 3);
 			uint32_t colour = gradient(i / len);
-			pge->Draw(x, y+i, olc::Pixel(colour));
+			pge->FillRect(x, y+i, thickness, 1, olc::Pixel(colour));
 		}
 	}
 
@@ -37,15 +38,17 @@ public:
 		this->x = (float) random(0, pge->ScreenWidth());
 		this->y = (float) random(-200, -50);
 		this->z = (float) random(0, 20); 
-		this->yspeed = (float) random(75, 600);
-		this->len = (float) random(15, 35);
+		this->yspeed = map(z, 0, 20, 75, 300);
+		this->len = map(z, 0, 20, 15, 35);
 	}
 
 	void fall() {
 		y = y + (yspeed * pge->GetElapsedTime());
-		
-		if (y > pge->ScreenHeight()) 
+
+		if (y > pge->ScreenHeight()) {
 			y = (float) random(-200, -50);
+			yspeed = map(z, 0, 20, 75, 300);
+		}
 	}
 
 	void show() {
