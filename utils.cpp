@@ -1,7 +1,7 @@
 /**
  * @file utils.cpp
  * @author Matthew Sasakamoose (matt.sasakamoose@gmail.com)
- * @brief utility functions implementations for the purple rain project
+ * @brief utility function implementations for the purple rain project
  * @version 0.1
  * @date 2022-01-22 
  */
@@ -10,13 +10,15 @@
 #include "olcPixelGameEngine.h"
 #include <cmath>
 
+// Maps the input within the input range [inputStart, inputEnd], to the output range [outputStart, outputEnd]
 float map (float input, float inputStart, float inputEnd, float outputStart, float outputEnd) {
 	float slope = (outputEnd - outputStart) / (inputEnd - inputStart);
 	return outputStart + (slope * (input - inputStart));
 }
 
+// Produces a random integer in the range [a, b]
 int random(int a, int b) {
-	return a + (rand() % (b - a));
+	return a + (rand() % ((b - a) + 1));
 }
 
 //input: ratio is between 0.0 to 1.0
