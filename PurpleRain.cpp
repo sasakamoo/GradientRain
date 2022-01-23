@@ -9,50 +9,9 @@
 
 #include "olcPixelGameEngine.h"
 #include "utils.h"
+#include "Droplet.h"
 
 static const olc::Pixel BGPurp(230, 230, 250);
-
-class Droplet {
-private:
-	float x;
-	float y;
-	float z;
-	float yspeed;
-	float len;
-
-    olc::PixelGameEngine* pge;
-
-private:
-	void DrawDroplet() {
-		for (float i = 0.0f; i < len; i++) {
-			uint32_t colour = gradient(i / len);
-			pge->Draw(x, y+i, olc::Pixel(colour));
-		}
-	}
-
-public:
-
-	Droplet(olc::PixelGameEngine* pge) {
-		this->pge = pge;
-		this->x = (float) random(0, pge->ScreenWidth());
-		this->y = (float) random(-200, -50);
-		this->z = (float) random(0, 20); 
-		this->yspeed = (float) random(75, 600);
-		this->len = (float) random(15, 35);
-	}
-
-	void fall() {
-		y = y + (yspeed * pge->GetElapsedTime());
-		
-		if (y > pge->ScreenHeight()) 
-			y = (float) random(-200, -50);
-	}
-
-	void show() {
-		DrawDroplet();
-	}
-	
-};
 
 // Override base class with your custom functionality
 class PurpleRain : public olc::PixelGameEngine

@@ -1,7 +1,7 @@
 /**
  * @file utils.cpp
  * @author Matthew Sasakamoose (matt.sasakamoose@gmail.com)
- * @brief utility functions for the purple rain project
+ * @brief utility functions implementations for the purple rain project
  * @version 0.1
  * @date 2022-01-22 
  */

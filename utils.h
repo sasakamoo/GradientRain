@@ -1,3 +1,11 @@
+/**
+ * @file utils.h
+ * @author Matthew Sasakamoose (matt.sasakamoose@gmail.com)
+ * @brief utility function declarations 
+ * @version 0.1
+ * @date 2022-01-22
+ */
+
 #ifndef UTIL_H_DEF
 #define UTIL_H_DEF
 
