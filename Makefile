@@ -1,7 +1,7 @@
 all: PurpleRain.exe
 
 PurpleRain.exe: olcPixelGameEngine.cpp utils.cpp PurpleRain.cpp
-	g++ -o PurpleRain.exe olcPixelGameEngine.cpp utils.cpp PurpleRain.cpp -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static -std=c++17
+	g++ -o app.exe olcPixelGameEngine.cpp utils.cpp PurpleRain.cpp -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static -std=c++17
 
 clean:
 	rm PurpleRain.exe
