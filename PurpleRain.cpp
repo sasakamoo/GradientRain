@@ -57,7 +57,6 @@ public:
 	
 };
 
-// Override base class with your custom functionality
 class PurpleRain : public olc::PixelGameEngine
 {
 private:
@@ -67,7 +66,6 @@ private:
 public:
 	PurpleRain()
 	{
-		// Name your application
 		sAppName = "PurpleRain";
 	}
 
@@ -83,7 +81,6 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		// Set background colour
 		Clear(BGPurp);
 		for (int i = 0; i < n; i++) {
 			d[i]->fall();
