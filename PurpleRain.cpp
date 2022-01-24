@@ -14,42 +14,50 @@ static const olc::Pixel BGPurp(0, 0, 0);
 
 class Droplet {
 private:
-	vf3d pos;
-	vf3d vel;
+	olc::vf3d pos;
+	olc::vf3d vel;
+	float gravity;
 	float len;
 	float thickness;
 
     olc::PixelGameEngine* pge;
 
 private:
-	void DrawDroplet() {
+	void drawDroplet() {
 		for (float i = 0.0f; i < len; i++) {
+			olc::vf2d tempPos = olc::v3dTov2d(pos);
+			olc::vf2d dir = olc::v3dTov2d(vel).norm();
 			uint32_t colour = gradient(i / len);
-			pge->FillRect(pos.x, pos.y+i, thickness, 1, olc::Pixel(colour));
+			pge->FillCircle(tempPos + (dir * i), thickness, olc::Pixel(colour));
 		}
+	}
+	
+	void updateValues() {
+		pos = olc::vf3d((float) random(0, pge->ScreenWidth()), (float) random(-200, -50), (float) random(0, 20));
+		vel = olc::vf3d(map(pos.z, 0, 20, 10, 20), map(pos.z, 0, 20, 10, 20), 0) * 2;
+		gravity = map(pos.z, 0, 20, 0.1, 0.2) * 2;
+		len = map(pos.z, 0, 20, 10, 20);
+		thickness = map(pos.z, 0, 20, 1, 3);
 	}
 
 public:
 
 	Droplet(olc::PixelGameEngine* pge) {
 		this->pge = pge;
-		this->pos = vf3d((float) random(0, pge->ScreenWidth()), (float) random(-200, -50), (float) random(0, 20));
-		this->vel = vf3d(0, map(pos.z, 0, 20, 75, 300), 0);
-		this->len = map(pos.z, 0, 20, 15, 35);
-		this->thickness = map(pos.z, 0, 20, 1, 3);
+		updateValues();
 	}
 
 	void fall() {
-		pos.y = pos.y + (vel.y * pge->GetElapsedTime());
-
-		if (pos.y > pge->ScreenHeight()) {
-			pos.y = (float) random(-200, -50);
-			vel.y = map(pos.z, 0, 20, 75, 300);
+		if (pos.y > pge->ScreenHeight() || pos.x > pge->ScreenWidth()) {
+			updateValues();
 		}
+
+		vel.y += gravity;
+		pos += vel * pge->GetElapsedTime();
 	}
 
 	void show() {
-		DrawDroplet();
+		drawDroplet();
 	}
 	
 };
@@ -79,10 +87,14 @@ public:
 	bool OnUserUpdate(float fElapsedTime) override
 	{
 		Clear(BGPurp);
+		// TODO: Blend pixels so that it looks better, currently not actually blending (use SetPixelBlend?)
+		SetPixelMode(olc::Pixel::ALPHA);
+		SetPixelBlend(0.8f);
 		for (int i = 0; i < n; i++) {
 			d[i]->fall();
 			d[i]->show();
 		}
+		SetPixelMode(olc::Pixel::NORMAL);
 
 		return true;
 	}
@@ -97,7 +109,7 @@ public:
 int main()
 {
 	PurpleRain demo;
-	if (demo.Construct(640, 360, 2, 2))
+	if (demo.Construct(1280, 720, 1, 1))
 		demo.Start();
 	return 0;
 }
