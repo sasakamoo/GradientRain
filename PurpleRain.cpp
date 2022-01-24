@@ -25,10 +25,10 @@ private:
 private:
 	void drawDroplet() {
 		for (float i = 0.0f; i < len; i++) {
-			olc::vf2d tempPos = olc::v3dTov2d(pos);
+			olc::vf2d _pos = olc::v3dTov2d(pos);
 			olc::vf2d dir = olc::v3dTov2d(vel).norm();
 			uint32_t colour = gradient(i / len);
-			pge->FillCircle(tempPos + (dir * i), thickness, olc::Pixel(colour));
+			pge->FillCircle(_pos + (dir * i), thickness, olc::Pixel(colour));
 		}
 	}
 	
@@ -109,7 +109,7 @@ public:
 int main()
 {
 	PurpleRain demo;
-	if (demo.Construct(1280, 720, 1, 1))
+	if (demo.Construct(1920, 1080, 1, 1, true))
 		demo.Start();
 	return 0;
 }
