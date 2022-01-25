@@ -12,120 +12,89 @@
 
 static const olc::Pixel DankPurp(138, 43, 226), BG(0, 0, 0);
 
-class Droplet {
-private:
-	olc::vf3d pos;
-	olc::vf3d vel;
+struct Drop {
+	olc::vf2d pos;
+	olc::vf2d vel;
+	float g;
 	float len;
 	float thickness;
-	float gravity;
 
-	// Eventually want this pointer out of this class
-	olc::PixelGameEngine* pge;
+	Drop() : pos(olc::vf2d(0, 0)), vel(olc::vf2d(0, 0)),
+		g(0), len(0), thickness(0) {}
 
-private:
-	
-	void resetFall() {
-		pos = olc::vf3d((float) random(0, pge->ScreenWidth()), (float) random(-200, -50), (float) random(0, 20));
-		vel = olc::vf3d(map(pos.z, 0, 20, 10, 20), map(pos.z, 0, 20, 10, 20), 0) * 2;
-		len = map(pos.z, 0, 20, 10, 20);
-		thickness = map(pos.z, 0, 20, 1, 3);
-		gravity = map(pos.z, 0, 20, 0.1, 0.2) * 2;
+	Drop(olc::vf2d _pos, olc::vf2d _vel, float _g, float _len, float _thickness) : 
+		pos(_pos), vel(_vel), g(_g), len(_len), thickness(_thickness) {}
+
+	void fall(float fElapsedTime) {
+		vel.y += g;
+		pos += vel * fElapsedTime;
 	}
-
-public:
-	Droplet(olc::PixelGameEngine* pge) {
-		this->pge = pge;
-		resetFall();
-	}
-
-	void fall() {
-		if (pos.y > pge->ScreenHeight() || pos.x > pge->ScreenWidth()) {
-			resetFall();
-		}
-
-		vel.y += gravity;
-		pos += vel * pge->GetElapsedTime();
-	}
-
-	olc::vf3d getPos() {
-		return pos;
-	}
-
-	olc::vf3d getVel() {
-		return vel;
-	}
-
-	float getLen() {
-		return len;
-	}
-
-	float getThickness() {
-		return thickness;
-	}
-	
 };
 
 class GradientRain {
 private:
 	const static int n = 100;
-	Droplet* d[n];
+	Drop drops[n];
 
     olc::PixelGameEngine* pge;
 
 private: 
+	Drop createDrop() {
+		float z = random(0, 20);
+		return 	Drop( 	olc::vf2d(random(0, pge->ScreenWidth()), random(-200, -50)),
+					   	olc::vf2d(map(z, 0, 20, 10, 20), map(z, 0, 20, 10, 20)) * 2, 
+						map(z, 0, 20, 0.1, 0.2),
+						map(z, 0, 20, 10, 20), 
+						map(z, 0, 20, 1, 3));
+	}
 
-	void createDroplets() {
+	void createDrops() {
 		for (int i = 0; i < n; i++) {
-			d[i] = new Droplet(pge);
+			drops[i] = createDrop();
 		}
 	}
 
-	void updateDroplets() {
+	void updateDrops() {
 		for (int i = 0; i < n; i++) {
-			d[i]->fall();
+			Drop drop = drops[i];
+			if (drop.pos.x > pge->ScreenWidth() || drop.pos.y > pge->ScreenHeight())
+				drop = createDrop();
+
+			drop.fall(pge->GetElapsedTime());
 		}
 	}
 
-	void deleteDroplets() {
-		delete[] d;
-	}
-
-	void drawDroplets() {
+	void drawDrops() {
 		for (int i = 0; i < n; i++) {
-			Droplet drop = *d[i];
-			for (float j = 0.0f; j < drop.getLen(); j++) {
-				olc::vf2d pos = olc::v3dTov2d(drop.getPos());
-				olc::vf2d dir = olc::v3dTov2d(drop.getVel());
-				uint32_t colour = gradient(j / drop.getLen());
-				pge->FillCircle(pos + (dir * j), drop.getThickness(), olc::Pixel(colour));
+			Drop drop = drops[i];
+			for (float j = 0.0f; j < drop.len; j++) {
+				olc::vf2d dir = drop.vel.norm();
+				uint32_t colour = gradient(j / drop.len);
+				pge->FillCircle(drop.pos + (dir * j), drop.thickness, olc::Pixel(colour));
 			}
 		}
 	}
 
 public:
 
-	GradientRain(olc::PixelGameEngine* pge) {
-		this->pge = pge;
-	}
+	GradientRain() : pge(nullptr) {}
+
+	GradientRain(olc::PixelGameEngine* _pge) : pge(_pge) {}
 	
 	void createRain() {
-		createDroplets();
+		createDrops();
 	}
 
 	void updateRain() {
-		updateDroplets();
-		drawDroplets();
-	}
-
-	void deleteRain() {
-		deleteDroplets();
+		updateDrops();
+		drawDrops();
 	}
 };
 
 class DankRain : public olc::PixelGameEngine
 {
-	GradientRain* rain;
+	GradientRain rain;
+
 public:
 	DankRain()
 	{
@@ -135,7 +104,8 @@ public:
 public:
 	bool OnUserCreate() override
 	{	
-		rain = new GradientRain(this);
+		rain = GradientRain(this);
+		rain.createRain();
 
 		return true;
 	}
@@ -143,14 +113,13 @@ public:
 	bool OnUserUpdate(float fElapsedTime) override
 	{
 		Clear(BG);
-		rain->updateRain();
+		rain.updateRain();
 
 		return true;
 	}
 
 	bool OnUserDestroy() override 
 	{
-		rain->deleteRain();
 
 		return true;
 	}
@@ -159,7 +128,7 @@ public:
 int main()
 {
 	DankRain demo;
-	if (demo.Construct(1920, 1080, 1, 1, true, true))
+	if (demo.Construct(1280, 720, 1, 1))
 		demo.Start();
 	return 0;
 }
