@@ -56,22 +56,25 @@ private:
 
 	void updateDrops() {
 		for (int i = 0; i < n; i++) {
-			Drop drop = drops[i];
-			if (drop.pos.x > pge->ScreenWidth() || drop.pos.y > pge->ScreenHeight())
-				drop = createDrop();
+			if (drops[i].pos.x > pge->ScreenWidth() || drops[i].pos.y > pge->ScreenHeight())
+				drops[i] = createDrop();
 
-			drop.fall(pge->GetElapsedTime());
+			drops[i].fall(pge->GetElapsedTime());
+		}
+	}
+
+	void drawDrop(Drop drop) {
+		for (float i = 0.0f; i < drop.len; i++) {
+			olc::vf2d dir = drop.vel.norm();
+			uint32_t colour = gradient(i / drop.len);
+			pge->FillCircle(drop.pos + (dir * i), drop.thickness, olc::Pixel(colour));
 		}
 	}
 
 	void drawDrops() {
 		for (int i = 0; i < n; i++) {
 			Drop drop = drops[i];
-			for (float j = 0.0f; j < drop.len; j++) {
-				olc::vf2d dir = drop.vel.norm();
-				uint32_t colour = gradient(j / drop.len);
-				pge->FillCircle(drop.pos + (dir * j), drop.thickness, olc::Pixel(colour));
-			}
+			drawDrop(drop);
 		}
 	}
 
