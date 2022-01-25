@@ -73,8 +73,7 @@ private:
 
 	void drawDrops() {
 		for (int i = 0; i < n; i++) {
-			Drop drop = drops[i];
-			drawDrop(drop);
+			drawDrop(drops[i]);
 		}
 	}
 
