@@ -76,7 +76,6 @@ private:
 	}
 
 public:
-
 	GradientRain() : pge(nullptr) {}
 
 	GradientRain(olc::PixelGameEngine* _pge) : pge(_pge) {}
