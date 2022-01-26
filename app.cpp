@@ -1,8 +1,8 @@
-#include "Rain.h"
+#include "GradientRain.h"
 
 int main()
 {
-	Rain demo;
+	GradientRain demo;
 	if (demo.Construct(1280, 720, 1, 1))
 		demo.Start();
 	return 0;

@@ -24,25 +24,24 @@ struct Drop {
 	void fall(float fElapsedTime);
 };
 
-class GradientRain {
+class GradientRain : public olc::PixelGameEngine {
 private:
 	const static int n = 100;
 	Drop drops[n];
 
-    olc::PixelGameEngine* pge;
-
 private: 
 	Drop createDrop();
 	void createDrops();
-	void updateDrops();
+	void updateDrops(float fElapsedTime);
 	void drawDrop(Drop drop);
 	void drawDrops();
 
 public:
 	GradientRain();
-	GradientRain(olc::PixelGameEngine* _pge);
-	void createRain();
-	void updateRain();
+
+public:
+	bool OnUserCreate() override;
+	bool OnUserUpdate(float fElapsedTime) override;
 };
 
 #endif

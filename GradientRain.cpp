@@ -7,6 +7,7 @@
  */
 
 #include "GradientRain.h"
+#include "olcPixelGameEngine.h"
 #include "utils.h"
 
 Drop::Drop() : pos(olc::vf2d(0, 0)), vel(olc::vf2d(0, 0)),
@@ -20,13 +21,13 @@ void Drop::fall(float fElapsedTime)  {
     pos += vel * fElapsedTime;
 }
 
-GradientRain::GradientRain() : pge(nullptr) {}
-
-GradientRain::GradientRain(olc::PixelGameEngine* _pge) : pge(_pge) {}
+GradientRain::GradientRain() {
+    sAppName = "Rainbow Rain!";
+}
 
 Drop GradientRain::createDrop() {
     float z = random(0, 20);
-    return 	Drop( 	olc::vf2d(random(0, pge->ScreenWidth()), random(-200, -50)),
+    return 	Drop( 	olc::vf2d(random(0, ScreenWidth()), random(-200, -50)),
                     olc::vf2d(map(z, 0, 20, 10, 20), map(z, 0, 20, 10, 20)) * 2, 
                     map(z, 0, 20, 0.1, 0.2),
                     map(z, 0, 20, 10, 20), 
@@ -39,12 +40,12 @@ void GradientRain::createDrops() {
     }
 }
 
-void GradientRain::updateDrops() {
+void GradientRain::updateDrops(float fElapsedTime) {
     for (int i = 0; i < n; i++) {
-        if (drops[i].pos.x > pge->ScreenWidth() || drops[i].pos.y > pge->ScreenHeight())
+        if (drops[i].pos.x > ScreenWidth() || drops[i].pos.y > ScreenHeight())
             drops[i] = createDrop();
 
-        drops[i].fall(pge->GetElapsedTime());
+        drops[i].fall(fElapsedTime);
     }
 }
 
@@ -52,7 +53,7 @@ void GradientRain::drawDrop(Drop drop) {
     for (float i = 0.0f; i < drop.len; i++) {
         olc::vf2d dir = drop.vel.norm();
         uint32_t colour = gradient(i / drop.len);
-        pge->FillCircle(drop.pos + (dir * i), drop.thickness, olc::Pixel(colour));
+        FillCircle(drop.pos + (dir * i), drop.thickness, olc::Pixel(colour));
     }
 }
 
@@ -62,11 +63,17 @@ void GradientRain::drawDrops() {
     }
 }
 
-void GradientRain::createRain() {
+bool GradientRain::OnUserCreate() {
     createDrops();
+
+    return true;
 }
 
-void GradientRain::updateRain() {
-    updateDrops();
+bool GradientRain::OnUserUpdate(float fElapsedTime) {
+    Clear({ 0, 0, 0 });
+
+    updateDrops(fElapsedTime);
     drawDrops();
+
+    return true;
 }
