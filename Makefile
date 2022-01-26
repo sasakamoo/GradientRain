@@ -1,10 +1,10 @@
 all: app build\app.o build\GradientRain.o build\utils.o build\olcPixelGameEngine.o
 
-build\olcPixelGameEngine.o: src\olcPixelGameEngine.cpp
-	g++ src\olcPixelGameEngine.cpp -o build\olcPixelGameEngine.o -c -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static -std=c++17
+build\olcPixelGameEngine.o: src\pge\olcPixelGameEngine.cpp
+	g++ src\pge\olcPixelGameEngine.cpp -o build\olcPixelGameEngine.o -c -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static -std=c++17
 
-build\utils.o: src\utils.cpp
-	g++ src\utils.cpp -o build\utils.o -c -std=c++17
+build\utils.o: src\utils\utils.cpp
+	g++ src\utils\utils.cpp -o build\utils.o -c -std=c++17
 
 build\GradientRain.o: src\GradientRain.cpp
 	g++ src\GradientRain.cpp -o build\GradientRain.o -c -std=c++17

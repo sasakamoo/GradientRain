@@ -7,7 +7,7 @@
  */
 
 #include "utils.h"
-#include "olcPixelGameEngine.h"
+#include "../pge/olcPixelGameEngine.h"
 #include <cmath>
 
 // Maps the input within the input range [inputStart, inputEnd], to the output range [outputStart, outputEnd]

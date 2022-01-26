@@ -6,9 +6,10 @@
  * @date 2022-01-25
  */
 
+#include "pge/olcPixelGameEngine.h"
+#include "utils/utils.h"
+
 #include "GradientRain.h"
-#include "olcPixelGameEngine.h"
-#include "utils.h"
 
 Drop::Drop() : pos(olc::vf2d(0, 0)), vel(olc::vf2d(0, 0)),
     g(0), len(0), thickness(0) {}

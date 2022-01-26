@@ -9,7 +9,7 @@
 #ifndef UTIL_H_DEF
 #define UTIL_H_DEF
 
-#include "olcPixelGameEngine.h"
+#include "../pge/olcPixelGameEngine.h"
 #include <cstdint>
 
 float map (float input, float inputStart, float inputEnd, float outputStart, float outputEnd);

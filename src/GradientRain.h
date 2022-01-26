@@ -9,7 +9,7 @@
 #ifndef GRADIENTRAIN_H_DEF
 #define GRADIENTRAIN_H_DEF
 
-#include "olcPixelGameEngine.h"
+#include "pge/olcPixelGameEngine.h"
 
 struct Drop {
 	olc::vf2d pos;
