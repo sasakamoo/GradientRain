@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 3.7)
 project(CAD)
 
+set(CMAKE_CXX_STANDARD 17)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CMakeFiles/)
 
 set(Executable output)
@@ -15,7 +17,6 @@ file(GLOB_RECURSE SourceFiles
 
 set(THREADS_PREFER_PTHREAD_FLAD ON)
 find_package(Threads REQUIRED)
-
 find_package(OpenGL REQUIRED)
 
 if (UNIX)
