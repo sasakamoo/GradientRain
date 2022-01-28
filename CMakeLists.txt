@@ -50,4 +50,6 @@ if (WIN32)
     target_link_libraries(${Executable} 
         ${WinSDK}
     )
+    
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgdiplus -lShlwapi -ldwmapi")
 endif (WIN32)
