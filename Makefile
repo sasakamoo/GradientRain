@@ -16,7 +16,7 @@ build\app.o: src\app.cpp
 	g++ src\app.cpp -o build\app.o -c -std=c++17
 
 app: build\app.o build\Poly.o build\GradientRain.o build\utils.o build\olcPixelGameEngine.o
-	g++ -o app.exe build\app.o build\Poly.o build\GradientRain.o build\utils.o build\olcPixelGameEngine.o -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -static -lstdc++fs -std=c++17
+	g++ -o app.exe build\app.o build\Poly.o build\GradientRain.o build\utils.o build\olcPixelGameEngine.o -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -static -std=c++17
 
 clean:
 	rm app.exe build\app.o build\Poly.o build\GradientRain.o build\utils.o build\olcPixelGameEngine.o
