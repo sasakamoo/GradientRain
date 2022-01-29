@@ -7,5 +7,5 @@
 **[The C++ PixelGameEngine!](https://github.com/OneLoneCoder/olcPixelGameEngine)**
 
 ### ***COMPILING***
-Use the mingw-w64 compiler for windows, distributed by msys2, and type  
-the command *mingw32-make.exe* in any terminal to compile the executable.
+Using CMake, build the Makefile using the "MinGW Makefiles" generator.  
+Then use mingw32-make.exe to build the executable.
