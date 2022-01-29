@@ -10,7 +10,9 @@
 #define UTIL_H_DEF
 
 #include "../pge/olcPixelGameEngine.h"
+
 #include <cstdint>
+#include <cmath>
 
 float map (float input, float inputStart, float inputEnd, float outputStart, float outputEnd);
 int random(int a, int b);

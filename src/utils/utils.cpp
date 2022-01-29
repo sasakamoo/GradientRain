@@ -7,8 +7,6 @@
  */
 
 #include "utils.h"
-#include "../pge/olcPixelGameEngine.h"
-#include <cmath>
 
 // Maps the input within the input range [inputStart, inputEnd], to the output range [outputStart, outputEnd]
 float map (float input, float inputStart, float inputEnd, float outputStart, float outputEnd) {
