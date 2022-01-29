@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = "C:\Users\unfal\Documents\Cool Stuff\Purple-Rain"
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/output.dir/all
+all: CMakeFiles/CAD.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,34 +70,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/output.dir/clean
+clean: CMakeFiles/CAD.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/output.dir
+# Target rules for target CMakeFiles/CAD.dir
 
 # All Build rule for target.
-CMakeFiles/output.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\unfal\Documents\Cool Stuff\Purple-Rain\CMakeFiles" --progress-num=1,2,3,4,5,6 "Built target output"
-.PHONY : CMakeFiles/output.dir/all
+CMakeFiles/CAD.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\unfal\Documents\Cool Stuff\Purple-Rain\CMakeFiles" --progress-num=1,2,3,4,5,6 "Built target CAD"
+.PHONY : CMakeFiles/CAD.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/output.dir/rule: cmake_check_build_system
+CMakeFiles/CAD.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\unfal\Documents\Cool Stuff\Purple-Rain\CMakeFiles" 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/output.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/CAD.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\unfal\Documents\Cool Stuff\Purple-Rain\CMakeFiles" 0
-.PHONY : CMakeFiles/output.dir/rule
+.PHONY : CMakeFiles/CAD.dir/rule
 
 # Convenience name for target.
-output: CMakeFiles/output.dir/rule
-.PHONY : output
+CAD: CMakeFiles/CAD.dir/rule
+.PHONY : CAD
 
 # clean rule for target.
-CMakeFiles/output.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/clean
-.PHONY : CMakeFiles/output.dir/clean
+CMakeFiles/CAD.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/clean
+.PHONY : CMakeFiles/CAD.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

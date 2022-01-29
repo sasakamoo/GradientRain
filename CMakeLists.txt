@@ -1,55 +1,21 @@
-# Currently linked / compiled by default is:
-# Threads (pthread), OpenGL, GLX, libPNG, X11
+# CMake for MinGW Makefiles
 
 cmake_minimum_required(VERSION 3.7)
 project(CAD)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CMakeFiles/)
-
-set(Executable output)
+set(Executable ${PROJECT_NAME})
 set(SourceDir src)
 
-file(GLOB_RECURSE SourceFiles
-    ${SourceDir}/*.cpp
-)
+file(GLOB_RECURSE SourceFiles ${SourceDir}/*.cpp)
 
-set(THREADS_PREFER_PTHREAD_FLAD ON)
-find_package(Threads REQUIRED)
-find_package(OpenGL REQUIRED)
-
-if (UNIX)
-    find_package(X11 REQUIRED)
-    find_package(PNG REQUIRED)
-    include_directories(${PNG_INCLUDE_DIR})
-endif (UNIX)
+add_executable(${Executable} ${SourceFiles})
 
 if (WIN32)
-    include_directories(${WinSDK})
-endif (WIN32)
-
-add_executable(${Executable} 
-    ${SourceFiles}
-)
-
-link_libraries(${Executable}
-    Threads::Threads
-    OpenGL::OpenGL
-    OpenGL::GL
-    OpenGL::GLX
-)
-
-if (UNIX) 
-    target_link_libraries(${Executable} 
-        ${X11_LIBRARIES}
-        PNG::PNG
-    )
-endif (UNIX)
-if (WIN32)
-    target_link_libraries(${Executable} 
-        ${WinSDK}
-    )
-    
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgdiplus -lShlwapi -ldwmapi")
+    target_link_libraries(${Executable} ${WinSDK})
+    target_link_libraries(${Executable} "-lopengl32")
+    target_link_libraries(${Executable} "-lgdiplus")
+    target_link_libraries(${Executable} "-lShlwapi")
+    target_link_libraries(${Executable} "-ldwmapi")
 endif (WIN32)

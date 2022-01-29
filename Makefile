@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named output
+# Target rules for targets named CAD
 
 # Build rule for target.
-output: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 output
-.PHONY : output
+CAD: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CAD
+.PHONY : CAD
 
 # fast build rule for target.
-output/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/build
-.PHONY : output/fast
+CAD/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/build
+.PHONY : CAD/fast
 
 src/GradientRain.obj: src/GradientRain.cpp.obj
 .PHONY : src/GradientRain.obj
 
 # target to build an object file
 src/GradientRain.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/GradientRain.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/GradientRain.cpp.obj
 .PHONY : src/GradientRain.cpp.obj
 
 src/GradientRain.i: src/GradientRain.cpp.i
@@ -141,7 +141,7 @@ src/GradientRain.i: src/GradientRain.cpp.i
 
 # target to preprocess a source file
 src/GradientRain.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/GradientRain.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/GradientRain.cpp.i
 .PHONY : src/GradientRain.cpp.i
 
 src/GradientRain.s: src/GradientRain.cpp.s
@@ -149,7 +149,7 @@ src/GradientRain.s: src/GradientRain.cpp.s
 
 # target to generate assembly for a file
 src/GradientRain.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/GradientRain.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/GradientRain.cpp.s
 .PHONY : src/GradientRain.cpp.s
 
 src/Poly.obj: src/Poly.cpp.obj
@@ -157,7 +157,7 @@ src/Poly.obj: src/Poly.cpp.obj
 
 # target to build an object file
 src/Poly.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/Poly.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/Poly.cpp.obj
 .PHONY : src/Poly.cpp.obj
 
 src/Poly.i: src/Poly.cpp.i
@@ -165,7 +165,7 @@ src/Poly.i: src/Poly.cpp.i
 
 # target to preprocess a source file
 src/Poly.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/Poly.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/Poly.cpp.i
 .PHONY : src/Poly.cpp.i
 
 src/Poly.s: src/Poly.cpp.s
@@ -173,7 +173,7 @@ src/Poly.s: src/Poly.cpp.s
 
 # target to generate assembly for a file
 src/Poly.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/Poly.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/Poly.cpp.s
 .PHONY : src/Poly.cpp.s
 
 src/app.obj: src/app.cpp.obj
@@ -181,7 +181,7 @@ src/app.obj: src/app.cpp.obj
 
 # target to build an object file
 src/app.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/app.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/app.cpp.obj
 .PHONY : src/app.cpp.obj
 
 src/app.i: src/app.cpp.i
@@ -189,7 +189,7 @@ src/app.i: src/app.cpp.i
 
 # target to preprocess a source file
 src/app.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/app.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/app.cpp.i
 .PHONY : src/app.cpp.i
 
 src/app.s: src/app.cpp.s
@@ -197,7 +197,7 @@ src/app.s: src/app.cpp.s
 
 # target to generate assembly for a file
 src/app.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/app.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/app.cpp.s
 .PHONY : src/app.cpp.s
 
 src/pge/olcPixelGameEngine.obj: src/pge/olcPixelGameEngine.cpp.obj
@@ -205,7 +205,7 @@ src/pge/olcPixelGameEngine.obj: src/pge/olcPixelGameEngine.cpp.obj
 
 # target to build an object file
 src/pge/olcPixelGameEngine.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/pge/olcPixelGameEngine.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/pge/olcPixelGameEngine.cpp.obj
 .PHONY : src/pge/olcPixelGameEngine.cpp.obj
 
 src/pge/olcPixelGameEngine.i: src/pge/olcPixelGameEngine.cpp.i
@@ -213,7 +213,7 @@ src/pge/olcPixelGameEngine.i: src/pge/olcPixelGameEngine.cpp.i
 
 # target to preprocess a source file
 src/pge/olcPixelGameEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/pge/olcPixelGameEngine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/pge/olcPixelGameEngine.cpp.i
 .PHONY : src/pge/olcPixelGameEngine.cpp.i
 
 src/pge/olcPixelGameEngine.s: src/pge/olcPixelGameEngine.cpp.s
@@ -221,7 +221,7 @@ src/pge/olcPixelGameEngine.s: src/pge/olcPixelGameEngine.cpp.s
 
 # target to generate assembly for a file
 src/pge/olcPixelGameEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/pge/olcPixelGameEngine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/pge/olcPixelGameEngine.cpp.s
 .PHONY : src/pge/olcPixelGameEngine.cpp.s
 
 src/utils/utils.obj: src/utils/utils.cpp.obj
@@ -229,7 +229,7 @@ src/utils/utils.obj: src/utils/utils.cpp.obj
 
 # target to build an object file
 src/utils/utils.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/utils/utils.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/utils/utils.cpp.obj
 .PHONY : src/utils/utils.cpp.obj
 
 src/utils/utils.i: src/utils/utils.cpp.i
@@ -237,7 +237,7 @@ src/utils/utils.i: src/utils/utils.cpp.i
 
 # target to preprocess a source file
 src/utils/utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/utils/utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/utils/utils.cpp.i
 .PHONY : src/utils/utils.cpp.i
 
 src/utils/utils.s: src/utils/utils.cpp.s
@@ -245,7 +245,7 @@ src/utils/utils.s: src/utils/utils.cpp.s
 
 # target to generate assembly for a file
 src/utils/utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\output.dir\build.make CMakeFiles/output.dir/src/utils/utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAD.dir\build.make CMakeFiles/CAD.dir/src/utils/utils.cpp.s
 .PHONY : src/utils/utils.cpp.s
 
 # Help Target
@@ -256,7 +256,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... output
+	@echo ... CAD
 	@echo ... src/GradientRain.obj
 	@echo ... src/GradientRain.i
 	@echo ... src/GradientRain.s

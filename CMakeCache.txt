@@ -242,21 +242,6 @@ CMAKE_STRIP:FILEPATH=C:/msys64/mingw64/bin/strip.exe
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//The directory containing a CMake configuration file for GDIPLUS.
-GDIPLUS_DIR:PATH=GDIPLUS_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for GDIPlus.
-GDIPlus_DIR:PATH=GDIPlus_DIR-NOTFOUND
-
-//OpenGL library for win32
-OPENGL_gl_LIBRARY:STRING=opengl32
-
-//GLU library for win32
-OPENGL_glu_LIBRARY:STRING=glu32
-
-//The directory containing a CMake configuration file for gdiplus.
-gdiplus_DIR:PATH=gdiplus_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
@@ -344,10 +329,6 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Test CMAKE_HAVE_LIBC_PTHREAD
-CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
-//Have include pthread.h
-CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=C:/Users/unfal/Documents/Cool Stuff/Purple-Rain
@@ -422,12 +403,4 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding OpenGL
-FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
-//Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//ADVANCED property for variable: OPENGL_gl_LIBRARY
-OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OPENGL_glu_LIBRARY
-OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
 
