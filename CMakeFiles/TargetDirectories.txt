@@ -1,3 +1,0 @@
-C:/Users/unfal/Documents/Cool Stuff/Purple-Rain/CMakeFiles/CAD.dir
-C:/Users/unfal/Documents/Cool Stuff/Purple-Rain/CMakeFiles/edit_cache.dir
-C:/Users/unfal/Documents/Cool Stuff/Purple-Rain/CMakeFiles/rebuild_cache.dir
