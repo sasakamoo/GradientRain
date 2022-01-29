@@ -1,10 +1,6 @@
-#include "GradientRain.h"
-#include "Poly.h"
+#include "App.h"
 
-int main()
-{
-	Poly demo;
+void App::start() {
 	if (demo.Construct(1280, 720, 1, 1))
 		demo.Start();
-	return 0;
 }
