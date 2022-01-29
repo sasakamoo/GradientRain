@@ -6,5 +6,6 @@ private:
     Poly demo;
 
 public:
+    App() = default;
     void start();
 };
