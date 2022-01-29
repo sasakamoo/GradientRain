@@ -6,3 +6,9 @@
 
 # Object files
 *.o
+
+# CMake
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
