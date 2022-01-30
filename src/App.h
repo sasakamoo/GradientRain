@@ -3,7 +3,7 @@
 
 class App {
 private:
-    Poly demo;
+    GradientRain demo;
 
 public:
     App() = default;
