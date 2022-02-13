@@ -1,6 +1,6 @@
 #include "pge/olcPixelGameEngine.h"
 
-class Shape;
+struct Shape;
 
 struct Node {
     olc::vf2d pos;
