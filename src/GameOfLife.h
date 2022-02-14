@@ -14,7 +14,7 @@ private:
     olc::vf2d offset = { 0, 0 };
     olc::vf2d startPan = { 0, 0 };
     olc::vf2d cursor = { 0, 0 };
-    float scale = 1.0f;
+    float scale = 10.0f;
     float grid = 1.0f;
 
     // List of cells existing in the world

@@ -1,9 +1,10 @@
 #include "GradientRain.h"
 #include "Poly.h"
+#include "GameOfLife.h"
 
 class App {
 private:
-    GradientRain demo;
+    GameOfLife demo;
 
 public:
     App() = default;
