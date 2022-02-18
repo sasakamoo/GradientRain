@@ -11,9 +11,9 @@ public:
 
 private:
     // Pan and zoom variables
-    olc::vf2d offset = { 0, 0 };
+    static olc::vf2d offset;
+    static olc::vf2d cursor;
     olc::vf2d startPan = { 0, 0 };
-    olc::vf2d cursor = { 0, 0 };
     float scale = 10.0f;
     float grid = 1.0f;
 

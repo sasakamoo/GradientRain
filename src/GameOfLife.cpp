@@ -1,5 +1,8 @@
 #include "GameOfLife.h"
 
+olc::vf2d GameOfLife::offset = { 0.0f, 0.0f };
+olc::vf2d GameOfLife::cursor = { 0.0f, 0.0f };
+
 GameOfLife::GameOfLife() {
     sAppName = "Game Of Life";
 }
