@@ -17,23 +17,20 @@ void GameOfLife::screenToWorld(int screenX, int screenY, olc::vf2d& v) {
     v.y = (float)((screenY / scale) + offset.y);
 }
 
-bool GameOfLife::OnUserCreate() {
-    offset = { (float)((-ScreenWidth() / 2) / scale), (float)((-ScreenHeight() / 2) / scale) };
-    return true;
-}
-
-bool GameOfLife::OnUserUpdate(float fElapsedTime) {
+void GameOfLife::handlePanZoom() {
+    // Location of mouse pan last frame
+    static olc::vf2d mousePan = { 0.0f, 0.0f };
+    
     // Get mouse location of this frame
     olc::vf2d mouse = { (float)GetMouseX(), (float)GetMouseY() };
 
-    // Handle pan and zoom
     if (GetMouse(2).bPressed || GetKey(olc::Key::SPACE).bPressed) {
-        startPan = mouse;
+        mousePan = mouse;
     }
 
     if (GetMouse(2).bHeld || GetKey(olc::Key::SPACE).bHeld) {
-        offset -= (mouse - startPan) / scale;
-        startPan = mouse;
+        offset -= (mouse - mousePan) / scale;
+        mousePan = mouse;
     }
 
     olc::vf2d mouseBeforeZoom;
@@ -51,16 +48,14 @@ bool GameOfLife::OnUserUpdate(float fElapsedTime) {
     screenToWorld((int)mouse.x, (int)mouse.y, mouseAfterZoom);
     offset += (mouseBeforeZoom - mouseAfterZoom);
 
-    // Snap cursor to nearest cell
-    cursor.x = floorf((mouseAfterZoom.x + 0.5f) * grid);
-    cursor.y = floorf((mouseAfterZoom.y + 0.5f) * grid);
+    // Snap cursor to cell its hovering over
+    cursor.x = floorf((mouseAfterZoom.x) * grid);
+    cursor.y = floorf((mouseAfterZoom.y) * grid);
+}
 
-    // Start drawing
-    Clear(olc::BLACK);
-
+void GameOfLife::drawWorld() {
     int sx, sy, ex, ey;
-
-    // Get visible world
+     // Get visible world
     olc::vf2d worldTopLeft, worldBottomRight;
     screenToWorld(0, 0, worldTopLeft);
     screenToWorld(ScreenWidth(), ScreenHeight(), worldBottomRight);
@@ -86,13 +81,35 @@ bool GameOfLife::OnUserUpdate(float fElapsedTime) {
     worldToScreen({ worldTopLeft.x, 0 }, sx, sy);
     worldToScreen({ worldBottomRight.x, 0 }, ex, ey);
     DrawLine(sx, sy, ex, ey, olc::GREY, 0xF0F0F0F0);
+}
 
+void GameOfLife::drawCursor() {
     // Draw temp cell placement
+    int sx, sy;
     worldToScreen(cursor, sx, sy);
     FillRect({ sx, sy }, { (int)scale, (int)scale }, { 255, 51, 255 });
 
     // Draw cursor string position
     DrawString(10, 10, "X=" + std::to_string(cursor.x) + ", Y=" + std::to_string(cursor.y), olc::YELLOW, 2);
+}
+
+bool GameOfLife::OnUserCreate() {
+    offset = { (float)((-ScreenWidth() / 2) / scale), (float)((-ScreenHeight() / 2) / scale) };
+    return true;
+}
+
+bool GameOfLife::OnUserUpdate(float fElapsedTime) {
+    // Handle pan and zoom
+    handlePanZoom();
+
+    // Start drawing
+    Clear(olc::BLACK);
+
+    // Draw world
+    drawWorld();
+
+    // Draw cursor
+    drawCursor();
 
     return true;
 }

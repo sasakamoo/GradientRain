@@ -13,7 +13,6 @@ private:
     // Pan and zoom variables
     static olc::vf2d offset;
     static olc::vf2d cursor;
-    olc::vf2d startPan = { 0, 0 };
     float scale = 10.0f;
     float grid = 1.0f;
 
@@ -25,6 +24,13 @@ private:
 
     // Convert coordinates from Screen Space ---> World Space
     void screenToWorld(int screenX, int screenY, olc::vf2d& v);
+
+    // Handle pan and zoom
+    void handlePanZoom();
+
+    // Draw functions
+    void drawWorld();
+    void drawCursor();
 
 public:
     bool OnUserCreate() override;
