@@ -1,4 +1,4 @@
-# CMake for MinGW Makefiles
+# CMake for olcPixelGameEngine (Currently only supports windows)
 cmake_minimum_required(VERSION 3.7)
 project(GradientRain)
 
