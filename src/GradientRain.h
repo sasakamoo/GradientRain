@@ -13,28 +13,28 @@
 #include "utils/utils.h"
 
 struct Drop {
-	olc::vf2d pos;
-	olc::vf2d vel;
-	float g;
-	float len;
+	olc::vf2d position;
+	olc::vf2d velocity;
+	float gravity;
+	float length;
 	float thickness;
 
 	Drop();
-	Drop(olc::vf2d _pos, olc::vf2d _vel, float _g, float _len, float _thickness);
+	Drop(olc::vf2d pos, olc::vf2d vel, float g, float len, float th);
 
 	void fall(float fElapsedTime);
 };
 
 class GradientRain : public olc::PixelGameEngine {
 private:
-	const static int n = 100;
+	const static int n = 500;
 	Drop drops[n];
 
 private: 
 	Drop createDrop();
 	void createDrops();
 	void updateDrops(float fElapsedTime);
-	void drawDrop(Drop drop);
+	void drawDrop(const Drop& drop);
 	void drawDrops();
 
 public:

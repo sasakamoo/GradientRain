@@ -1,7 +1,6 @@
 # CMake for MinGW Makefiles
-
 cmake_minimum_required(VERSION 3.7)
-project(CAD)
+project(GradientRain)
 
 set(CMAKE_CXX_STANDARD 17)
 
