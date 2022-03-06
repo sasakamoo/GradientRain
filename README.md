@@ -4,9 +4,7 @@
 # **GRAPHICS LIBRARY BY javidx9 - another legend**
 **[The C++ PixelGameEngine!](https://github.com/OneLoneCoder/olcPixelGameEngine)**
 
-## ***Use CMake to use your preferred build system(Visual Studio, ninja, mingw, etc).***
-
-## ***Using mingw on windows with CMake!***
+## ***Using MinGW on windows with CMake!***
 In order to use mingw with CMake you need to have both installed and their binaries pointed to in the PATH.
 - [CMake](https://cmake.org/)
 - [MinGW](https://www.msys2.org/)
