@@ -11,8 +11,8 @@ In order to use mingw with CMake you need to have both installed and their binar
 - [MinGW](https://www.msys2.org/)
 
 To generate your build system, open any terminal and in the same directory as the CMakeLists.txt file type,  
-`cmake -G "MinGW Makefiles"` to have CMake automatically generate makefiles for you.
-Once done, you can simply type `mingw32-make.exe` to compile your executable using the MinGW compiler. 
+`cmake -G "MinGW Makefiles"` to have CMake automatically generate makefiles for you. Once done, 
+you can simply type `mingw32-make.exe` to compile your executable using the MinGW compiler. 
 
 If `mingw32-make.exe` gives an error after *adding* a file, type `mingw32-make.exe rebuild_cache` in
 your terminal to avoid using CMake all the time.
