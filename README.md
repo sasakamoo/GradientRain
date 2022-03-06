@@ -6,6 +6,7 @@
 
 ## ***Using MinGW on windows with CMake!***
 In order to use mingw with CMake you need to have both installed and their binaries pointed to in the PATH.
+
 - [CMake](https://cmake.org/)
 - [MinGW](https://www.msys2.org/)
 
