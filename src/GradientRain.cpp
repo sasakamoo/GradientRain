@@ -25,10 +25,10 @@ GradientRain::GradientRain() {
 
 Drop GradientRain::createDrop() {
     float z = random(0, 20);
-    return 	Drop( 	olc::vf2d(random(-ScreenWidth()/2, ScreenWidth()), random(-200, -50)),
+    return 	Drop( 	olc::vf2d(random(-ScreenWidth()/2, ScreenWidth()), random(-100, -50)),
                     olc::vf2d(map(z, 0, 20, 20, 40), map(z, 0, 20, 20, 60)), 
-                    map(z, 0, 20, 10, 20),
-                    map(z, 0, 20, 10, 30), 
+                    map(z, 0, 20, 5, 30),
+                    map(z, 0, 20, 10, 20), 
                     map(z, 0, 20, 1, 3));
 }
 

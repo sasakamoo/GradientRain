@@ -27,7 +27,7 @@ struct Drop {
 
 class GradientRain : public olc::PixelGameEngine {
 private:
-	const static int n = 500;
+	const static int n = 250;
 	Drop drops[n];
 
 private: 
