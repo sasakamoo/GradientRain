@@ -14,5 +14,5 @@ To generate your build system, open any terminal and in the same directory as th
 Once done, you can simply type `mingw32-make.exe` to compile your executable using the MinGW compiler. 
 
 If `mingw32-make.exe` gives an error after *adding* a file, type `mingw32-make.exe rebuild_cache` in
-your terminal to avoid using CMake for that as well.
+your terminal to avoid using CMake all the time.
 
