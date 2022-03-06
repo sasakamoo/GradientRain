@@ -15,4 +15,3 @@ Once done, you can simply type `mingw32-make.exe` to compile your executable usi
 
 If `mingw32-make.exe` gives an error after *adding* a file, type `mingw32-make.exe rebuild_cache` in
 your terminal to avoid using CMake all the time.
-
